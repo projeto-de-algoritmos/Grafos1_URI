@@ -9,7 +9,8 @@
 | 16/0014433  |  Maria Luiza Ferreira |
 | 15/0009313  |  Felipe Hargreaves |
 
-## Sobre 
+## Sobre
+
 #### Contaminação 
 Estamos no ano 2241, e a colonização de outros planetas já é uma realidade. Você trabalha no centro de controle de recursos, no planeta URI-942, controlando principalmente os estoques de água. A água é armazenada em tanques subterrâneos, protegida das altas temperaturas da superfície.
 
@@ -19,13 +20,19 @@ Os mapas foram discretizados em células, sendo que as células podem correspond
 
 Problema retirado do URI: https://www.urionlinejudge.com.br/judge/pt/problems/view/1583
 
+
+#### Classificação do Problema
+
+A solução para o problema envolveu os conceitos de grafos ao aplicar uma adaptação do Breadth-First Search (BFS), funcionando de forma similar ao _flood fill_.
+
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+
+![Log de resposta aceita no URI](img/ac.jpg)
 
 ## Instalação 
 **Linguagem**: Python<br>
-**Framework**: <br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
+**Execução**: Dentro da pasta do projeto, executar `python contaminacao.py` e inserir entradas de acordo com os exemplos abaixo. Para encerrar a execução, inserir um caso de teste com as entradas `0 0`.
+
 
 ## Uso 
 #### Contaminação 
@@ -36,7 +43,8 @@ A entrada termina quando N = M = 0, caso que não deve ser processado. Em todos 
 Exemplo de entradas e saídas:
 | Entrada | Saída | 
 |---|---|
-|   |   |
+| 6 7 <br> XXAAXXX <br> XXAAXAX <br>  XXXXAXX <br> XAAAAAX <br> TAAXAAA <br> XXXXXXX |  XXAAXXX <br> XXAAXAX <br> XXXXTXX <br> XTTTTTX <br> TTTXTTT <br> XXXXXXX|
+| 3 3 <br> TTT <br> XXX <br> AAA | TTT <br> XXX <br> AAA|
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
