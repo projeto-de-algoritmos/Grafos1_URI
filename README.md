@@ -19,7 +19,7 @@ Porém, seus colegas Márcio e Ana descobriram falhas nas paredes de alguns tanq
 
 Os mapas foram discretizados em células, sendo que as células podem corresponder a uma região com rocha, água (tanque) ou agente contaminante. Devido as rachaduras, uma célula com agente contaminante contamina as células adjacentes (esquerda, direita, acima e abaixo) contendo água, porém a contaminação é barrada por células de rocha.
 
-Problema retirado do URI: https://www.urionlinejudge.com.br/judge/pt/problems/view/1583
+Problema retirado e adaptado do URI: https://www.urionlinejudge.com.br/judge/pt/problems/view/1583
 
 #### Babel 
 
@@ -50,8 +50,11 @@ A segunda solução (Babel) envolveu o conceito de grafos e uma adaptação do D
 
 ## Instalação 
 #### Contaminação
-**Linguagem**: Python<br>
-**Execução**: Dentro da pasta do projeto, executar `python contaminacao.py` e inserir entradas de acordo com os exemplos abaixo. Para encerrar a execução, inserir um caso de teste com as entradas `0 0`.
+**Linguagem**: Python e HTML/JS<br> 
+**Execução**: Dentro da pasta do projeto, executar:
+  1. Instalar as dependências `pip install -r requirements.txt`
+  2. Executar o comando `python contaminacao.py` ou `python3 contaminacao.py`. 
+  3. Abrir o navegador e acessar `localhost:5000/contaminacao`
 
 
 #### Babel
@@ -60,15 +63,19 @@ A segunda solução (Babel) envolveu o conceito de grafos e uma adaptação do D
 
 ## Uso 
 #### Contaminação 
-A entrada é composta por vários mapas, sendo que a descrição de cada mapa começa com uma linha contendo dois inteiros N e M, correspondente ao número de linhas e de colunas do mapa. As N linhas a seguir descrevem o mapa, cada linha contendo M caracteres, além do pulo de linha. Os caracteres possíveis são: A, que representa uma célula contendo água, X, que representa uma célula com rocha e T que representa uma célula com agente contaminante.
-
-A entrada termina quando N = M = 0, caso que não deve ser processado. Em todos os mapas, N e M são menores ou iguais a 50.
-
-Exemplo de entradas e saídas:
-| Entrada | Saída | 
-|---|---|
-| 6 7 <br> XXAAXXX <br> XXAAXAX <br>  XXXXAXX <br> XAAAAAX <br> TAAXAAA <br> XXXXXXX |  XXAAXXX <br> XXAAXAX <br> XXXXTXX <br> XTTTTTX <br> TTTXTTT <br> XXXXXXX|
-| 3 3 <br> TTT <br> XXX <br> AAA | TTT <br> XXX <br> AAA|
+##### Entrada
+  1. Entrar com o número de Linhas e de Colunas da matriz que deseja gerar. 
+  2. Clique em Gerar Matriz para gerar uma matriz randomicamente.
+  3. Clique em Contaminar.
+  
+  Segue a legenda do problema:
+  | Elemento | Cor |
+  |---------|-------|
+  | Água | Azul |
+  | Contaminação | Vermelho |
+  | Rocha | Preto |
+  
+  * Onde tem contaminação perto da água, ela será contaminada e assim mudará de cor, passando da cor azul para a cor vermelha. As rochas não são afetadas.
 
 #### Babel
 
