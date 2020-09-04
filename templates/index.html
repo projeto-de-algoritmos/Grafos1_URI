@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="startSolution()">clicaí</button>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+        integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        let socket = io();
+        socket.on('update', function(data) {
+            updateTable(data.graph);
+        });
+    </script>
+    <script>
+        const m = [
+            ['A', 'A', 'X'],
+            ['A', 'T', 'X'],
+            ['A', 'X', 'X'],
+        ];
+        function initTable() {
+            const body = document.getElementsByTagName('body')[0];
+            const table = document.createElement('table');
+            const tbody = document.createElement('tbody');
+
+            for (let i = 0; i < m.length; i++) {
+                const tr = document.createElement('tr');
+                tr.style.height = "125px";
+                tr.style.width = "125px";
+                for (let j = 0; j < m[i].length; j++) {
+                    const td = document.createElement('td');
+                    if (m[i][j] == 'A') {
+                        td.style.backgroundColor = 'blue';
+                    } else if (m[i][j] == 'X') {
+                        td.style.backgroundColor = 'black';
+                    } else if (m[i][j] == 'T') {
+                        td.style.backgroundColor = 'red';
+                    }
+                    td.style.width = "125px";
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+            }
+            table.appendChild(tbody);
+            body.prepend(table);
+        }
+
+        function startSolution() {
+            socket.emit('start', { graph: m });
+        }
+
+        function updateTable(m) {
+            const table = document.getElementsByTagName('table')[0];
+            for (let i = 0; i < m.length; i++) {
+                const tr = table.getElementsByTagName('tr')[i];
+                for (let j = 0; j < m[i].length; j++) {
+                    const td = tr.getElementsByTagName('td')[j];
+                    if (m[i][j] == 'A') {
+                        td.style.backgroundColor = 'blue';
+                    } else if (m[i][j] == 'X') {
+                        td.style.backgroundColor = 'black';
+                    } else if (m[i][j] == 'T') {
+                        td.style.backgroundColor = 'red';
+                    }
+                }
+            }
+        }
+
+        initTable();
+    </script>
+</body>
+
+</html>
