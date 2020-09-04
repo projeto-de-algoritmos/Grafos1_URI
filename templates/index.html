@@ -8,8 +8,10 @@
 </head>
 
 <body>
-    <button onclick="startSolution()">clicaí</button>
-
+    <input id="row" placeholder="Quantidade de Linhas"/>
+    <input id="col" placeholder="Quantidade de Colunas"/>
+    <button onclick="initTable()">Gerar Matriz</button>
+    <button onclick="startSolution()">Contaminar</button>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
         integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
@@ -20,23 +22,26 @@
         });
     </script>
     <script>
-        const m = [
-            ['X', 'X', 'A', 'T', 'X', 'X', 'X'],
-            ['X', 'X', 'A', 'A', 'X', 'A', 'X'],
-            ['X', 'X', 'X', 'X', 'A', 'X', 'X'],
-            ['X', 'A', 'A', 'A', 'A', 'A', 'X'],
-            ['T', 'A', 'A', 'X', 'A', 'A', 'A'],
-            ['X', 'X', 'X', 'X', 'X', 'X', 'X'],
-        ];
+        const array = ['X', 'A', 'T']
+        let m = []
+
         function initTable() {
+            let table = document.getElementsByTagName('table');
+            
+            if(table.length){
+                table[0].parentNode.removeChild(table[0])
+            }
+
+            m = createMatrix()
+
             const body = document.getElementsByTagName('body')[0];
-            const table = document.createElement('table');
+            table = document.createElement('table');
             const tbody = document.createElement('tbody');
 
             for (let i = 0; i < m.length; i++) {
                 const tr = document.createElement('tr');
-                tr.style.height = "125px";
-                tr.style.width = "125px";
+                tr.style.height = "50px";
+                tr.style.width = "50px";
                 for (let j = 0; j < m[i].length; j++) {
                     const td = document.createElement('td');
                     if (m[i][j] == 'A') {
@@ -46,17 +51,32 @@
                     } else if (m[i][j] == 'T') {
                         td.style.backgroundColor = 'red';
                     }
-                    td.style.width = "125px";
+                    td.style.width = "50px";
                     tr.appendChild(td);
                 }
                 tbody.appendChild(tr);
             }
             table.appendChild(tbody);
-            body.prepend(table);
+            body.appendChild(table);
         }
 
         function startSolution() {
             socket.emit('start', { graph: m });
+        }
+
+        function createMatrix() {
+            let row = document.getElementById('row').value;
+            let col = document.getElementById('col').value;
+            m = [];
+
+            for(let i = 0; i < row; i++){
+                m[i] = [];
+                for(let j = 0; j < col; j++){
+                    let index = Math.floor(Math.random()*array.length);
+                    m[i][j] = array[index];
+                }
+            }
+            return m;
         }
 
         function updateTable(m) {
