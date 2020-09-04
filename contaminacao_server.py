@@ -19,7 +19,7 @@ def handle_start(message):
     graph = message['graph']
     n = len(message['graph'][0])
     m = len(message['graph'])
-    start(socketio, graph, n, m)
+    start(socketio, graph, m, n)
 
 if __name__ == '__main__':
     socketio.run(app)

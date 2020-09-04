@@ -31,7 +31,7 @@ def bfs(socketio, graph, start, n, m):
             if graph[node[0]][node[1]] == 'A':
                 graph[node[0]][node[1]] = 'T'
                 socketio.emit('update', {'graph': graph})
-                sleep(1)
+                sleep(.4)
                 
             neighbours = get_neighbours(graph, node, n, m)
 
