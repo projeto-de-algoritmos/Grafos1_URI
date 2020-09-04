@@ -60,7 +60,9 @@ while n != 0:
       if valid_path:
         lengths.append(length)
 
-
-    print(min(lengths))
+    if lengths:
+      print(min(lengths))
+    else:
+      print('impossivel')
 
   n = int(input())

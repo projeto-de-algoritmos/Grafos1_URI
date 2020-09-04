@@ -44,10 +44,19 @@ A segunda solução (Babel) envolveu o conceito de grafos e uma adaptação do D
 
 ![Log de resposta aceita no URI](img/ac.jpg)
 
+<img src="img/exec.png" width=150></img>
+![Log de TLE no URI](img/tle.png)
+**Observação**: Apesar de funcionar com os casos de teste de exemplo, a execução no URI ultrapassou o limite de tempo desejado para tamanhos de dados maiores. Isso implica em uma solução com complexidade de tempo não ótima. A intenção é evoluir a solução no módulo de Grafos 2, com algoritmos específicos otimizados para esse tipo de problema.
+
 ## Instalação 
+#### Contaminação
 **Linguagem**: Python<br>
 **Execução**: Dentro da pasta do projeto, executar `python contaminacao.py` e inserir entradas de acordo com os exemplos abaixo. Para encerrar a execução, inserir um caso de teste com as entradas `0 0`.
 
+
+#### Babel
+**Linguagem**: Python<br>
+**Execução**: Dentro da pasta do projeto executar `python babel.py` e inserir entradas de acordo com os exemplos abaixo. Para encerrar a execução, inserir um caso de teste com `0`.
 
 ## Uso 
 #### Contaminação 
@@ -60,6 +69,24 @@ Exemplo de entradas e saídas:
 |---|---|
 | 6 7 <br> XXAAXXX <br> XXAAXAX <br>  XXXXAXX <br> XAAAAAX <br> TAAXAAA <br> XXXXXXX |  XXAAXXX <br> XXAAXAX <br> XXXXTXX <br> XTTTTTX <br> TTTXTTT <br> XXXXXXX|
 | 3 3 <br> TTT <br> XXX <br> AAA | TTT <br> XXX <br> AAA|
+
+#### Babel
+
+##### Entrada
+A entrada contém vários casos de teste. A primeira linha de um caso de teste contém um inteiro M (1 ≤ M ≤ 2000), representando o total de palavras compiladas por Joãozinho. A segunda linha contém duas cadeias de caracteres distintas O e D, separadas por um espaço em branco, indicando os idiomas de origem e destino respectivamente. Cada uma das M linhas seguintes contém três cadeias de caracteres I1, I2 e P, separadas por um espaço em branco, representando dois idiomas e uma palavra comum entre ambos (I1 e I2 são sempre diferentes). Todas as cadeias de caracteres terão tamanho mínimo 1 e máximo 50 e conterão apenas letras minúsculas. Um mesmo par de idiomas pode ter várias palavras diferentes associadas a ele, porém uma mesma palavra P nunca será repetida.
+
+O final da entrada é indicado por uma linha que contém apenas um zero.
+
+#### Saída
+
+Para cada caso de teste da entrada o programa apresenta um inteiro com o comprimento da menor sequência que satisfaça as condições apresentadas. Caso não exista uma solução, o programa retorna `impossivel`.
+
+
+Exemplo de entradas e saídas:
+
+| Entrada | Saída |
+|---------|-------|
+|4 <br> portugues frances <br> ingles espanhol red <br> espanhol portugues amigo <br> frances ingles date <br>espanhol ingles actual <br>4 <br>portugues alemao <br>ingles espanhol red <br>espanhol portugues amigo <br>frances ingles date <br>espanhol ingles actual <br>6 <br>portugues frances <br>ingles espanhol red <br>espanhol portugues amigo <br>frances ingles date <br>frances espanhol la <br>portugues ingles a <br>espanhol ingles actual <br>0 <br>| 12 <br> impossivel <br> 5 |
 
 ## Outros 
 Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
