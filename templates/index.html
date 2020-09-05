@@ -8,11 +8,36 @@
 </head>
 
 <body>
-    <input id="row" placeholder="Quantidade de Linhas"/>
-    <input id="col" placeholder="Quantidade de Colunas"/>
-    <button onclick="initTable()">Gerar Matriz</button>
-    <button onclick="startSolution()">Contaminar</button>
-
+    <div class="content">
+        <div>
+            <p class="text">Digite a quantidade de linhas e colunas da matriz que deseja gerar randomicamente</p>
+        </div>
+        <div>
+            <input id="row" type="number" max="10" placeholder="Quantidade de Linhas"/>
+            <input id="col" type="number" max="10" placeholder="Quantidade de Colunas"/>
+            <p id="msg"></p>
+        </div>
+        <div>
+            <button class="button" onclick="initTable()">Gerar Matriz</button>
+            <button class="button" onclick="startSolution()">Contaminar</button>
+        </div>
+        <div>
+            <dl>
+                <b>Legenda</b>
+                <br/>
+                <dt>Azul - Água</dt>
+                <br/>
+                <dt>Vermelho - Contaminação</dt>
+                <br/>
+                <dt>Preto - Rocha</dt>
+            </dl>
+        </div>
+    </div>
+    <div>
+        <p class="title">Matriz gerada</p>
+    </div>
+    <p id="initial"></p>
+     <div id="div-table"></div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
         integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
@@ -25,6 +50,10 @@
         const array = ['X', 'A', 'T']
         let m = []
 
+         window.onload=function(){
+            document.getElementById("initial").innerHTML = 'Não há matriz gerada';
+        }
+
         function initTable() {
             let table = document.getElementsByTagName('table');
             
@@ -34,7 +63,7 @@
 
             m = createMatrix()
 
-            const body = document.getElementsByTagName('body')[0];
+            const body = document.getElementById('div-table');
             table = document.createElement('table');
             const tbody = document.createElement('tbody');
 
@@ -64,19 +93,29 @@
             socket.emit('start', { graph: m });
         }
 
+
         function createMatrix() {
             let row = document.getElementById('row').value;
             let col = document.getElementById('col').value;
             m = [];
 
-            for(let i = 0; i < row; i++){
-                m[i] = [];
-                for(let j = 0; j < col; j++){
-                    let index = Math.floor(Math.random()*array.length);
-                    m[i][j] = array[index];
+            if(row > 10 || col > 10 ){
+                document.getElementById("msg").innerHTML = 'Insira um valor menor que 10';
+                document.getElementById("initial").innerHTML = 'Não há matriz gerada';
+            } else {
+                document.getElementById("msg").innerHTML = '';
+                document.getElementById("initial").innerHTML = '';
+                for(let i = 0; i < row; i++){
+                    m[i] = [];
+                    for(let j = 0; j < col; j++){
+                        let index = Math.floor(Math.random()*array.length);
+                        m[i][j] = array[index];
+                    }
                 }
+                return m;
             }
-            return m;
+
+            
         }
 
         function updateTable(m) {
@@ -101,3 +140,74 @@
 </body>
 
 </html>
+<style>
+.button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 38px;
+    color: white;
+    padding: 9px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+input {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.content {
+    margin-left: 50%;
+    margin-top: 3%;
+}
+
+dl {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 5px 15px;
+    font-family: Sans-serif;
+}
+
+dt, dd {
+    display: inline;
+    width: 10%;
+    margin: 0 auto;
+    font-family: Sans-serif;
+}
+
+.title {
+    margin-top: -20%;
+    font-size: 30px;
+    margin-left: 13%;
+    font-family: Sans-serif;
+}
+
+#initial {
+    font-size: 12px;
+    margin-left: 15%;
+    font-family: Sans-serif;
+}
+
+.text {
+    font-family: Sans-serif;
+}
+
+#div-table {
+    margin-left: 3%;
+}
+
+#msg {
+    font-family: Sans-serif;
+    color: red;
+    margin-top: -6px;
+    font-size: 13px;
+}
+
+</style>
