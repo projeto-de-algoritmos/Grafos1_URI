@@ -41,9 +41,10 @@ A primeira solução (Contaminação) para o problema envolveu os conceitos de g
 A segunda solução (Babel) envolveu o conceito de grafos e uma adaptação do Depth-First Search (DFS) para achar todos os caminhos possíveis entre dois pontos. 
 
 ## Screenshots
+#### Contaminção
+![Contaminacao](img/contaminacao.png)
 
-![Log de resposta aceita no URI](img/ac.jpg)
-
+#### Babel
 <img src="img/exec.png" width=250></img>
 ![Log de TLE no URI](img/tle.png)
 **Observação**: Apesar de funcionar com os casos de teste de exemplo, a execução no URI ultrapassou o limite de tempo desejado para tamanhos de dados maiores. Isso implica em uma solução com complexidade de tempo não ótima. A intenção é evoluir a solução no módulo de Grafos 2, com algoritmos específicos otimizados para esse tipo de problema.
