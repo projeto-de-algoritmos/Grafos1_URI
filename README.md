@@ -41,6 +41,8 @@ A primeira solução (Contaminação) para o problema envolveu os conceitos de g
 A segunda solução (Babel) envolveu o conceito de grafos e uma adaptação do Depth-First Search (DFS) para achar todos os caminhos possíveis entre dois pontos. 
 
 ## Screenshots
+Os vídeos de execução dos programas se encontram na pasta `videos` do repositório.
+
 #### Contaminção
 ![Contaminacao](img/contaminacao.png)
 
