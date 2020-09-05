@@ -56,7 +56,7 @@ Os vídeos de execução dos programas se encontram na pasta `videos` do reposit
 **Linguagem**: Python e HTML/JS<br> 
 **Execução**: Dentro da pasta do projeto, executar:
   1. Instalar as dependências `pip install -r requirements.txt`
-  2. Executar o comando `python contaminacao.py` ou `python3 contaminacao.py`. 
+  2. Executar o comando `python contaminacao_server.py` ou `python3 contaminacao_server.py`. 
   3. Abrir o navegador e acessar `localhost:5000/contaminacao`
 
 
